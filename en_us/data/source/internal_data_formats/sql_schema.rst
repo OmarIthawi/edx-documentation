@@ -1028,11 +1028,11 @@ The ``teams_courseteam`` table has the following columns.
        - NO
        -
      * - country
-       - 
+       - varchar(?)
        - YES
        -  
      * - language
-       - 
+       - varchar(?)
        - YES
        -
      * - last_activity_at
@@ -1052,8 +1052,8 @@ The ``teams_courseteam`` table has the following columns.
 ---------
 team_id
 ---------
- 
-  The unique identifier for this team.
+
+  The unique identifier for this team. (From )
 
 ---------------------
 discussion_topic_id
@@ -1065,7 +1065,8 @@ discussion_topic_id
 name
 ---------------------
 
-The display name for this team.
+  The display name for this team. This is a mandatory value that must be
+  provided when a team is created.
 
 
 ---------------------
@@ -1085,40 +1086,59 @@ course_id
 topic_id
 ---------------------
 
+  The unique identifier for the teams topic associated with the team. Topics
+  are defined by course team members in **Advanced Settings** in Studio. The
+  definition of a topic includes a name, description, and a unique topic ID.
+
 
 ---------------------
 date_created
 ---------------------
 
+  The date/time that this team was created.
+
 ---------------------
 description
 ---------------------
+
+  The description for the team. This is a mandatory value that must be
+  provided when a team is created.
 
 ---------------------
 country
 ---------------------
 
-The optional primary country that team members identify with.
+  An optional field in a team's details. A team can specify a country that the
+  team's members primarily identify with.
 
 ---------------------
 language
 ---------------------
    
-The optional primary language of the team. Most codes are ISO 639-1 codes,
-with the addition of codes for simplified and traditional Chinese.
+  An optional field in a team's details. A team can specify a language that
+  the team's members primarily communicate using. Most language codes are ISO
+  639-1 codes, with the addition of codes for simplified and traditional
+  Chinese.
 
 --------------------
 last_activity_at
 --------------------
 
+  The date/time that the most recent activity on the team was recorded.
+  Activity includes posts, comments, and responses in the team's discussions
+  as well as changes to team membership, and changes to team details.
+
 --------------------
 users
 --------------------
+
+  ?
 
 --------------------
 team_size
 --------------------
 
+  The current count of the number of members in this team.
 
 
 .. _teams_courseteammembership:
@@ -1162,25 +1182,26 @@ The ``teams_courseteammembership`` table has the following columns.
 user
 ---------------------
 
-
+  The user ID (?) of the user who joined or left the team.
 
 ---------------------
 team
 ---------------------
 
-   
+  The ID (?) or name (?) of the team that the user joined or left.
 
 --------------------
 date_joined
 --------------------
 
-
+  The date/time that the user joined the team?
 
 --------------------
 last_activity_at
 --------------------
 
-
+  The date/time of the most recent activity performed by this user on this
+  team. Activity includes: ?
 
 
 .. _Courseware_Progress:
