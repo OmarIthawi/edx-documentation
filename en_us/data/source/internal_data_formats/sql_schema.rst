@@ -121,12 +121,12 @@ enrollment.
 * :ref:`user_id_map`
 * :ref:`student_languageproficiency`
 
-
 The following tables store data gathered when users participate in teams in a
 course.
 
 * :ref:`teams_courseteam`
 * :ref:`teams_courseteammembership`
+
 
 
 .. _auth_user:
@@ -1046,7 +1046,8 @@ The ``teams_courseteam`` table has the following columns.
      * - team_size
        - int(11)
        - NO
-        
+       -
+ 
 
 ---------
 team_id
