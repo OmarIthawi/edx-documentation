@@ -121,6 +121,14 @@ enrollment.
 * :ref:`user_id_map`
 * :ref:`student_languageproficiency`
 
+
+The following tables store data gathered when users participate in teams in a
+course.
+
+* :ref:`teams_courseteam`
+* :ref:`teams_courseteammembership`
+
+
 .. _auth_user:
 
 ================================
@@ -242,7 +250,7 @@ is_staff
   It does not indicate that the person is a member of the course team for any
   given course.
 
-  Generally, users with this flag set to 1 are either edX Partner Managers
+  Generally, users with this flag set to 1 are either edX program managers
   responsible for course delivery, or edX developers who need access for
   testing and debugging purposes. Users who have ``is_staff`` = 1 have
   Admin privileges on all courses and can see additional debug
@@ -969,6 +977,209 @@ code
 ----
   The language code. Most codes are ISO 639-1 codes, with the addition of
   codes for simplified and traditional Chinese.
+
+
+.. _teams_courseteam:
+
+==============================================
+Columns in the teams_courseteam Table
+==============================================
+
+This table stores information about teams-related activity in a course.
+
+**History**: Added September 15 2015.
+
+The ``teams_courseteam`` table has the following columns.
+
+.. list-table::
+     :widths: 15 15 15 15
+     :header-rows: 1
+
+     * - Column
+       - Type
+       - Null
+       - Key
+     * - team_id
+       - varchar(255)  
+       - NO
+       - PRI
+     * - discussion_topic_id
+       - varchar(255)
+       - NO
+       - 
+     * - name
+       - varchar(255)
+       - NO
+       -
+     * - course_id
+       - textfield
+       - NO
+       -
+     * - topic_id
+       - varchar(255)
+       - YES
+       -
+     * - date_created
+       - datetime
+       - NO
+       -  
+     * - description
+       - varchar(300)
+       - NO
+       -
+     * - country
+       - 
+       - YES
+       -  
+     * - language
+       - 
+       - YES
+       -
+     * - last_activity_at
+       - datetime
+       - NO
+       -
+     * - users
+       - varchar(255)
+       - NO
+       -
+     * - team_size
+       - int(11)
+       - NO
+        
+
+---------
+team_id
+---------
+ 
+  The unique identifier for this team.
+
+---------------------
+discussion_topic_id
+---------------------
+
+
+
+---------------------
+name
+---------------------
+
+The display name for this team.
+
+
+---------------------
+course_id
+---------------------
+
+  The course identifier, in the format ``{key type}:{org}+{course}+{run}``. For
+  example, ``course-v1:edX+DemoX+Demo_2014``.
+
+  **History**: In October 2014, identifiers for some new courses began to use
+  the format shown above. Other new courses, and all courses created prior to
+  October 2014, use the format ``{org}/{course}/{run}``,  for example,
+  ``MITx/6.002x/2012_Fall``.
+
+
+---------------------
+topic_id
+---------------------
+
+
+---------------------
+date_created
+---------------------
+
+---------------------
+description
+---------------------
+
+---------------------
+country
+---------------------
+
+The optional primary country that team members identify with.
+
+---------------------
+language
+---------------------
+   
+The optional primary language of the team. Most codes are ISO 639-1 codes,
+with the addition of codes for simplified and traditional Chinese.
+
+--------------------
+last_activity_at
+--------------------
+
+--------------------
+users
+--------------------
+
+--------------------
+team_size
+--------------------
+
+
+
+.. _teams_courseteammembership:
+
+================================================
+Columns in the teams_courseteammembership Table
+================================================
+
+This table stores information about teams-related activity in a course.
+
+**History**: Added September 15 2015.
+
+The ``teams_courseteammembership`` table has the following columns.
+
+.. list-table::
+     :widths: 15 15 15 15
+     :header-rows: 1
+
+     * - Column
+       - Type
+       - Null
+       - Key
+     * - user
+       - 
+       - NO
+       - 
+     * - team
+       - 
+       - NO
+       - 
+     * - date_joined
+       - datetime
+       - NO
+       -
+     * - last_activity_at
+       - datetime
+       - NO
+       -
+
+---------------------
+user
+---------------------
+
+
+
+---------------------
+team
+---------------------
+
+   
+
+--------------------
+date_joined
+--------------------
+
+
+
+--------------------
+last_activity_at
+--------------------
+
+
 
 
 .. _Courseware_Progress:
