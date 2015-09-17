@@ -3971,10 +3971,16 @@ changes in team membership.
 In addition to the :ref:`common<context>` ``context`` member fields, this
 event type also includes the following ``event`` member field.
 
-This field serves the same purpose for this event as it does for the
-:ref:`edx_team_team_changed` event.
+.. list-table::
+   :widths: 15 15 60
+   :header-rows: 1
 
-* ``team_id``
+   * - Field
+     - Type
+     - Details
+   * - ``team_id``
+     - string
+     - The identifier for the team.
 
 
 .. _edx_team_changed:
@@ -4016,14 +4022,19 @@ event type also includes the following ``event`` member fields.
      - The value of the field before the modification. If this value is longer
        than 1250 characters, the string is truncated, ``...`` is added at the
        end of the string, and this field is included in the ``truncated``
-       array.
-   * - ``team_id``
-     - string
-     - The identifier for the team.    
+       array.  
    * - ``truncated``
      - array
      - The ``truncated`` event field is an array of the ``old`` and ``new``
        fields that have been truncated.
+
+The ``edx.team.changed`` event also includes the following ``event`` member
+field.
+
+* ``team_id``
+
+This field serves the same purpose for this event as it does for the
+:ref:`edx_team_activity_updated` event.
 
 
 ``edx.team.created``
@@ -4042,7 +4053,7 @@ In addition to the :ref:`common<context>` ``context`` member fields, this
 event type also includes the following ``event`` member field.
 
 This field serves the same purpose for this event as it does for the
-:ref:`edx_team_team_changed` event.
+:ref:`edx_team_activity_updated` event.
 
 * ``team_id``
 
@@ -4064,7 +4075,7 @@ In addition to the :ref:`common<context>` ``context`` member fields, this
 event type also includes the following ``event`` member field.
 
 This field serves the same purpose for this event as it does for the
-:ref:`edx_team_team_changed` event.
+:ref:`edx_team_activity_updated` event.
 
 * ``team_id``
 
@@ -4107,7 +4118,7 @@ member field.
 * ``team_id``
 
 This field serves the same purpose for this event as it does for the
-:ref:`edx_team_team_changed` event.
+:ref:`edx_team_activity_updated` event.
 
 
 
@@ -4152,7 +4163,7 @@ member field.
 * ``team_id``
 
 This field serves the same purpose for this event as it does for the
-:ref:`edx_team_team_changed` event.   
+:ref:`edx_team_activity_updated` event.   
 
 
 ``edx.team.page_viewed``
@@ -4195,7 +4206,7 @@ member field.
 * ``team_id``
 
 This field serves the same purpose for this event as it does for the
-:ref:`edx_team_team_changed` event. For the ``edx.team.page_viewed`` event,
+:ref:`edx_team_activity_updated` event. For the ``edx.team.page_viewed`` event,
 the value of this field is set to ``null`` if the page that was viewed has no
 applicable team, or if a team does not exist.
 
