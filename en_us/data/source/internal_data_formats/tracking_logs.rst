@@ -3138,20 +3138,23 @@ complete, the server emits an ``edx.forum.thread.created`` event.
    * - ``anonymous``
      - Boolean
      - Applies only to courses that allow discussion posts that are anonymous
-       to all other users.       
+       to all other users.
+
        'true' only if the user selected the **post anonymously** check box.
 
    * - ``anonymous_to_peers``
      - Boolean
      - Applies only to courses that allow discussion posts that are anonymous
        to other students. The username of the thread creator is visible only
-       to users who have discussion management privileges.       
+       to users who have discussion management privileges.
+
        'true' only if the user selected the **post anonymously to classmates**
        check box.
 
    * - ``body``
      - string
      - The text supplied for the new post.      
+       
        Also present for ``edx.forum.response.created`` and
        ``edx.forum.comment.created`` events.
 
@@ -3187,6 +3190,7 @@ complete, the server emits an ``edx.forum.thread.created`` event.
    * - ``id``
      - string
      - A unique identifier for this forum contribution.
+
        Also present for ``edx.forum.response.created`` and
        ``edx.forum.comment.created`` events.
 
@@ -3921,36 +3925,61 @@ Instructor Dashboard, the server emits an ``edx.cohort.user_removed`` event.
 .. _student_teams_events:
 
 ==========================
-Student Teams Events
+Teams-Related Events
 ==========================
 
-This section includes descriptions of the following events, generated when a
-course includes teams, and learners or course team members perform particular
-teams-related actions. This list includes both student events and course team
-events, because some of these events are triggered by actions that can be
-performed both by students and course staff, or by students with special roles
-such as community TAs as well as course staff.
+This section includes descriptions of the following events, which are
+generated if a course includes teams, and learners or course team members
+perform particular teams-related actions. This list includes both student
+events and course team events, because some of these events are triggered by
+actions that can be performed both by students and course staff (with the
+Staff, Admin, Discussion Admin or Discussion Moderator roles), or by students
+with special roles such as community TAs.
 
 This section presents teams-related events alphabetically. Typically, the
 first event produced when teams are included in a course is the
 ``edx.team.created`` event.
 
-* ``edx.team.changed``
-* ``edx.team.created``
-* ``edx.team.deleted``
-* ``edx.team.learner_added``
-* ``edx.team.learner_removed``
-* ``edx.team.page_viewed``
-* ``edx.team.searched``
+.. contents:: 
+  :local:
+  :depth: 1
 
 
 For information about including teams in a course, see `Teams Setup`_ in the
 *Building and Running an edX Course* guide.
 
 
-.. _edx_team_team_changed:
+.. _edx_team_activity_updated:
 
-``edx.team.team_changed``
+``edx.team.activity_updated``
+*********************************
+
+When team discussion activity has occurred on a team, including a team member
+posting, editing posts, commenting, responding, endorsing, and so on), the
+server emits an ``edx.team.activity_updated`` event. 
+
+The definition of activity that would trigger this event does not include
+changes in team membership. 
+
+**Event Source**: Server
+
+**History** Added 9 Sept 2015.
+
+``event`` **Member Fields**:
+
+
+In addition to the :ref:`common<context>` ``context`` member fields, this
+event type also includes the following ``event`` member field.
+
+This field serves the same purpose for this event as it does for the
+:ref:`edx_team_team_changed` event.
+
+* ``team_id``
+
+
+.. _edx_team_changed:
+
+``edx.team.changed``
 *********************************
 
 When a team's information is edited, the server emits one
@@ -4150,18 +4179,15 @@ event type also includes the following ``event`` member fields.
      - Details  
    * - ``page_name``  
      - string
-     - The name of the page that was viewed. For example, ``all-topics``,
-       ``single-team``, ``my-teams``.
+     - The name of the page that was viewed. Possible values are: ``browse``,
+       ``edit-team``, ``my-teams``, ``new-team``, ``search teams``, ``single-
+       team``, and ``single-topic``.
    * - ``topic_id``
      - string
      - The identifier of the topic related to the page that was viewed. This
        value is set to ``null`` if a topic is not applicable to the page that
        was viewed, or if the topic does not exist.
-   * - ``team_id``
-     - string
-     - The identifier of the team related to the page that was viewed. This
-       value is set to ``null`` if a team is not applicable to the page that
-       was viewed, or if the team does not exist.
+
 
 The ``edx.team.page_viewed`` event also includes the following ``event``
 member field. 
