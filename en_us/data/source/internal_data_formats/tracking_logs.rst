@@ -3963,7 +3963,7 @@ changes in team membership.
 
 **Event Source**: Server
 
-**History** Added 9 Sept 2015.
+**History** Added 16 Sept 2015.
 
 ``event`` **Member Fields**:
 
@@ -3993,7 +3993,7 @@ When a team's information is edited, the server emits one
 
 **Event Source**: Server
 
-**History** Added 9 Sept 2015.
+**History** Added 16 Sept 2015.
 
 ``event`` **Member Fields**:
 
@@ -4045,7 +4045,7 @@ server emits an ``edx.team.created`` event.
 
 **Event Source**: Server
 
-**History** Added 9 Sept 2015.
+**History** Added 16 Sept 2015.
 
 ``event`` **Member Fields**:
 
@@ -4067,7 +4067,7 @@ team members who have any of the **Staff**, **Admin**, **Discussion Admin**,
 
 **Event Source**: Server
 
-**History** Added 9 Sept 2015.
+**History** Added 16 Sept 2015.
 
 ``event`` **Member Fields**:
 
@@ -4088,7 +4088,7 @@ When a user joins a team or is added by someone else, the server emits an
 
 **Event Source**: Server
 
-**History** Added 9 Sept 2015.
+**History** Added 16 Sept 2015.
 
 ``event`` **Member Fields**:
 
@@ -4135,7 +4135,7 @@ learners from teams.
 
 **Event Source**: Server
 
-**History** Added 9 Sept 2015.
+**History** Added 16 Sept 2015.
 
 ``event`` **Member Fields**:
 
@@ -4174,7 +4174,7 @@ courseware, the server emits an ``edx.team.page_viewed`` event.
 
 **Event Source**: Server
 
-**History** Added 9 Sept 2015.
+**History** Added 16 Sept 2015.
 
 ``event`` **Member Fields**:
 
@@ -4220,7 +4220,7 @@ event.
 
 **Event Source**: Server
 
-**History** Added 9 Sept 2015.
+**History** Added 16 Sept 2015.
 
 ``event`` **Member Fields**:
 
