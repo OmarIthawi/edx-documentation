@@ -999,18 +999,18 @@ The ``teams_courseteam`` table has the following columns.
        - Type
        - Null
        - Key
+     * - id
+       - int(11)
+       - NO
+       - UNI (?)      
      * - team_id
        - varchar(255)  
        - NO
        - PRI
-     * - discussion_topic_id
-       - varchar(255)
-       - NO
-       - MUL
      * - name
        - varchar(255)
        - NO
-       - PRI (?)       
+       - PRI (?) 
      * - course_id
        - textfield
        - NO
@@ -1034,6 +1034,10 @@ The ``teams_courseteam`` table has the following columns.
      * - language
        - varchar(?)
        - YES
+       - MUL             
+     * - discussion_topic_id
+       - varchar(255)
+       - NO
        - MUL
      * - last_activity_at
        - datetime
@@ -1043,10 +1047,13 @@ The ``teams_courseteam`` table has the following columns.
        - int(11)
        - NO
        - MUL
-     * - id
-       - int(11)
-       - NO
-       - UNI (?)
+
+
+--------------------
+id
+--------------------
+
+  The learner's ID, from ``auth_user.id``.
 
 ---------
 team_id
@@ -1055,18 +1062,11 @@ team_id
   The unique identifier for this team. 
 
 ---------------------
-discussion_topic_id
----------------------
-
-  The identifier for all threads in this team's discussions.
-
----------------------
 name
 ---------------------
 
   The display name for this team. This is a mandatory value that must be
   provided when a team is created.
-
 
 ---------------------
 course_id
@@ -1080,7 +1080,6 @@ course_id
   October 2014, use the format ``{org}/{course}/{run}``,  for example,
   ``MITx/6.002x/2012_Fall``.
 
-
 ---------------------
 topic_id
 ---------------------
@@ -1093,7 +1092,8 @@ topic_id
 date_created
 ---------------------
 
-  The date/time that this team was created.
+  The date and time that this team was created, in the format ``YYYY-
+  MM-DD HH:MM:SS``.
 
 ---------------------
 description
@@ -1107,7 +1107,7 @@ country
 ---------------------
 
   An optional field in a team's details. A team can specify a country that the
-  team's members primarily identify with.
+  team's members primarily identify with. Country codes are ISO 3166-1 codes.
 
 ---------------------
 language
@@ -1118,28 +1118,26 @@ language
   639-1 codes, with the addition of codes for simplified and traditional
   Chinese.
 
+---------------------
+discussion_topic_id
+---------------------
+
+  The identifier for all threads in this team's discussions.  
+
 --------------------
 last_activity_at
 --------------------
 
-  The date/time that the most recent activity on the team was recorded.
-  Activity includes posts, comments, and responses in the team's discussions
+  The date and time that the most recent activity on the team was recorded, in
+  the format ``YYYY- MM-DD HH:MM:SS``. The current definition of activity for
+  this field includes posts, comments, and responses in the team's discussions
   as well as changes to team membership, and changes to team details.
-
 
 --------------------
 team_size
 --------------------
 
-  The current count of the number of members in this team.
-
-
---------------------
-id
---------------------
-
-  The learner's ID, from ``auth_user.id``.
-
+  The current count of the number of members in the team.
 
 
 .. _teams_courseteammembership:
@@ -1196,16 +1194,17 @@ team_id
 date_joined
 --------------------
 
-  The timestamp of the time that the user joined the team.
+  The timestamp of the time that the user joined the team, in the format
+  ``YYYY- MM-DD HH:MM:SS``.
 
 --------------------
 last_activity_at
 --------------------
 
   The date/time of the most recent activity performed by this user on this
-  team. The current definition of "activity" is limited to discussions-related
-  actions: adding or deleting posts, adding comments or responses, and voting
-  on posts.
+  team, in the format ``YYYY- MM-DD HH:MM:SS``. The current definition of
+  "activity" is limited to discussions-related actions: adding or deleting
+  posts, adding comments or responses, and voting on posts.
 
 
 .. _Courseware_Progress:
