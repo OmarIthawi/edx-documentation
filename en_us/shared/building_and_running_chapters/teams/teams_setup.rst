@@ -60,6 +60,8 @@ includes team topic names and the maximum team size.
    specified at least one team topic.
 
 
+
+
 #. In Studio, from the **Settings** menu, select **Advanced Settings**.
 
 #. On the **Advanced Settings** page, select **Show Deprecated Settings**,
@@ -126,6 +128,15 @@ have created at least one topic.
 .. image:: ../../../shared/building_and_running_chapters/Images/Teams_TopicsView.png
   :width: 600
   :alt: Three topics on the Browse Teams page.
+
+
+.. note::  EdX recommends that you do not delete topics once you have created
+   them in a live course, and teams exist within those topics that learners
+   might have already joined. If you delete a topic from the **Teams
+   Configuration** policy key, that topic is no longer visible in the LMS, and
+   learners will not be able to leave teams that had been formed in the
+   deleted topic.
+
 
 
 .. _Create a Team:
