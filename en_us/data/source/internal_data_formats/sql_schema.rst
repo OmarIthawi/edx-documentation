@@ -1129,12 +1129,6 @@ last_activity_at
   as well as changes to team membership, and changes to team details.
 
 --------------------
-users
---------------------
-
-  ?
-
---------------------
 team_size
 --------------------
 
