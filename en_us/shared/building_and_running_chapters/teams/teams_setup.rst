@@ -64,7 +64,7 @@ includes team topic names and the maximum team size.
    running, and if learners might have already joined teams within topics. If
    you delete a topic from the **Teams Configuration** policy key, that topic
    is no longer visible in the LMS, and learners will not be able to leave
-   teams that had been formed in the deleted topic.
+   teams associated with the deleted topic.
 
 
 #. In Studio, from the **Settings** menu, select **Advanced Settings**.
