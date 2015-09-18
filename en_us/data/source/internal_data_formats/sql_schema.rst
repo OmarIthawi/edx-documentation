@@ -1006,60 +1006,59 @@ The ``teams_courseteam`` table has the following columns.
      * - discussion_topic_id
        - varchar(255)
        - NO
-       - 
+       - MUL
      * - name
        - varchar(255)
        - NO
-       -
+       - PRI (?)       
      * - course_id
        - textfield
        - NO
-       -
+       - MUL
      * - topic_id
        - varchar(255)
        - YES
-       -
+       - MUL
      * - date_created
        - datetime
        - NO
-       -  
+       - MUL 
      * - description
        - varchar(300)
        - NO
-       -
+       - MUL
      * - country
        - varchar(?)
        - YES
-       -  
+       - MUL 
      * - language
        - varchar(?)
        - YES
-       -
+       - MUL
      * - last_activity_at
        - datetime
        - NO
-       -
-     * - users
-       - varchar(255)
-       - NO
-       -
+       - MUL
      * - team_size
        - int(11)
        - NO
-       -
- 
+       - MUL
+     * - id
+       - int(11)
+       - NO
+       - UNI (?)
 
 ---------
 team_id
 ---------
 
-  The unique identifier for this team. (From )
+  The unique identifier for this team. 
 
 ---------------------
 discussion_topic_id
 ---------------------
 
-
+  The identifier for all threads in this team's discussions.
 
 ---------------------
 name
@@ -1086,10 +1085,9 @@ course_id
 topic_id
 ---------------------
 
-  The unique identifier for the teams topic associated with the team. Topics
-  are defined by course team members in **Advanced Settings** in Studio. The
-  definition of a topic includes a name, description, and a unique topic ID.
-
+  The unique identifier for the teams topic associated with the team. Topics,
+  including an ID for each topic, are defined by course team members in
+  **Advanced Settings** in Studio.
 
 ---------------------
 date_created
@@ -1128,11 +1126,20 @@ last_activity_at
   Activity includes posts, comments, and responses in the team's discussions
   as well as changes to team membership, and changes to team details.
 
+
 --------------------
 team_size
 --------------------
 
   The current count of the number of members in this team.
+
+
+--------------------
+id
+--------------------
+
+  The learner's ID, from ``auth_user.id``.
+
 
 
 .. _teams_courseteammembership:
@@ -1141,7 +1148,7 @@ team_size
 Columns in the teams_courseteammembership Table
 ================================================
 
-This table stores information about teams-related activity in a course.
+This table stores information about learners who are members in a team.
 
 **History**: Added September 15 2015.
 
@@ -1156,46 +1163,49 @@ The ``teams_courseteammembership`` table has the following columns.
        - Null
        - Key
      * - user
-       - 
+       - varchar (?)
        - NO
-       - 
-     * - team
-       - 
+       - UNI
+     * - team_id
+       - varchar (?)
        - NO
-       - 
+       - PRI
      * - date_joined
        - datetime
        - NO
-       -
+       - MUL
      * - last_activity_at
        - datetime
        - NO
-       -
+       - MUL
 
 ---------------------
 user
 ---------------------
 
-  The user ID (?) of the user who joined or left the team.
+  The ID of a user who is currently a member of the team, from
+  ``auth_user.id``.
 
 ---------------------
-team
+team_id
 ---------------------
 
-  The ID (?) or name (?) of the team that the user joined or left.
+  The ID of the team, from ``teams_courseteam.id``.
 
 --------------------
 date_joined
 --------------------
 
-  The date/time that the user joined the team?
+  The timestamp of the time that the user joined the team.
 
 --------------------
 last_activity_at
 --------------------
 
   The date/time of the most recent activity performed by this user on this
-  team. Activity includes: ?
+  team. The current definition of "activity" is limited to discussions-related
+  actions: adding or deleting posts, adding comments or responses, and voting
+  on posts.
 
 
 .. _Courseware_Progress:
