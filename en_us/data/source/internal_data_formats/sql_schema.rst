@@ -121,6 +121,14 @@ enrollment.
 * :ref:`user_id_map`
 * :ref:`student_languageproficiency`
 
+The following tables store data gathered when users participate in teams in a
+course.
+
+* :ref:`teams_courseteam`
+* :ref:`teams_courseteammembership`
+
+
+
 .. _auth_user:
 
 ================================
@@ -969,6 +977,237 @@ code
 ----
   The language code. Most codes are ISO 639-1 codes, with the addition of
   codes for simplified and traditional Chinese.
+
+
+.. _teams_courseteam:
+
+==============================================
+Columns in the teams_courseteam Table
+==============================================
+
+This table stores information about teams-related activity in a course.
+
+**History**: Added September 15 2015.
+
+The ``teams_courseteam`` table has the following columns.
+
+.. list-table::
+     :widths: 15 15 15 15
+     :header-rows: 1
+
+     * - Column
+       - Type
+       - Null
+       - Key
+     * - team_id
+       - varchar(255)  
+       - NO
+       - PRI
+     * - discussion_topic_id
+       - varchar(255)
+       - NO
+       - 
+     * - name
+       - varchar(255)
+       - NO
+       -
+     * - course_id
+       - textfield
+       - NO
+       -
+     * - topic_id
+       - varchar(255)
+       - YES
+       -
+     * - date_created
+       - datetime
+       - NO
+       -  
+     * - description
+       - varchar(300)
+       - NO
+       -
+     * - country
+       - varchar(?)
+       - YES
+       -  
+     * - language
+       - varchar(?)
+       - YES
+       -
+     * - last_activity_at
+       - datetime
+       - NO
+       -
+     * - team_size
+       - int(11)
+       - NO
+       -
+     * - id
+       - int(11)
+       - NO
+       -
+
+---------
+team_id
+---------
+
+  The unique identifier for this team. 
+
+---------------------
+discussion_topic_id
+---------------------
+
+  The identifier for all threads in this team's discussions.
+
+---------------------
+name
+---------------------
+
+  The display name for this team. This is a mandatory value that must be
+  provided when a team is created.
+
+
+---------------------
+course_id
+---------------------
+
+  The course identifier, in the format ``{key type}:{org}+{course}+{run}``. For
+  example, ``course-v1:edX+DemoX+Demo_2014``.
+
+  **History**: In October 2014, identifiers for some new courses began to use
+  the format shown above. Other new courses, and all courses created prior to
+  October 2014, use the format ``{org}/{course}/{run}``,  for example,
+  ``MITx/6.002x/2012_Fall``.
+
+
+---------------------
+topic_id
+---------------------
+
+  The unique identifier for the teams topic associated with the team. Topics,
+  including an ID for each topic, are defined by course team members in
+  **Advanced Settings** in Studio.
+
+
+---------------------
+date_created
+---------------------
+
+  The date/time that this team was created.
+
+---------------------
+description
+---------------------
+
+  The description for the team. This is a mandatory value that must be
+  provided when a team is created.
+
+---------------------
+country
+---------------------
+
+  An optional field in a team's details. A team can specify a country that the
+  team's members primarily identify with.
+
+---------------------
+language
+---------------------
+   
+  An optional field in a team's details. A team can specify a language that
+  the team's members primarily communicate using. Most language codes are ISO
+  639-1 codes, with the addition of codes for simplified and traditional
+  Chinese.
+
+--------------------
+last_activity_at
+--------------------
+
+  The date/time that the most recent activity on the team was recorded.
+  Activity includes posts, comments, and responses in the team's discussions
+  as well as changes to team membership, and changes to team details.
+
+
+--------------------
+team_size
+--------------------
+
+  The current count of the number of members in this team.
+
+
+--------------------
+id
+--------------------
+
+  The learner's ID, from ``auth_user.id``.
+
+
+
+.. _teams_courseteammembership:
+
+================================================
+Columns in the teams_courseteammembership Table
+================================================
+
+This table stores information about learners who join, leave, or use the
+discussions in teams in a course.
+
+**History**: Added September 15 2015.
+
+The ``teams_courseteammembership`` table has the following columns.
+
+.. list-table::
+     :widths: 15 15 15 15
+     :header-rows: 1
+
+     * - Column
+       - Type
+       - Null
+       - Key
+     * - user
+       - 
+       - NO
+       - 
+     * - team
+       - 
+       - NO
+       - 
+     * - date_joined
+       - datetime
+       - NO
+       -
+     * - last_activity_at
+       - datetime
+       - NO
+       -
+
+---------------------
+user
+---------------------
+
+  The ID of a user who is currently a member of the team, from
+  ``auth_user.id``.
+
+---------------------
+team_id
+---------------------
+
+  The ID of the team, from ``teams_courseteam.id``.
+
+--------------------
+date_joined
+--------------------
+
+  The timestamp of the time that the user joined the team.
+
+--------------------
+last_activity_at
+--------------------
+
+  The date/time of the most recent activity performed by this user on this
+  team. The current definition of "activity" is limited to discussions-related
+  actions: adding or deleting posts, adding comments or responses, and voting
+  on posts.
 
 
 .. _Courseware_Progress:
